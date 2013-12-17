@@ -1,9 +1,9 @@
 define(['$',
-        'ecma_ast_zipper/ecma_zipper',
+        'khepri_ast_zipper/khepri_zipper',
         'neith/zipper',
         'neith/tree'],
 function($,
-        ecma_zipper,
+        khepri_zipper,
         zipper,
         tree) {
     
@@ -20,7 +20,7 @@ function($,
                         $.Expression(
                             $.Assign($.Id('a'), $.Number(1)))));
                 
-                var z = ecma_zipper.ecmaZipper(prog);
+                var z = khepri_zipper.khepriZipper(prog);
                 
                 var r = tree.node(zipper.up(zipper.down(z)));
                 
@@ -42,7 +42,7 @@ function($,
                     $.Expression($.Id('a')),
                     $.Expression($.Id('b')));
                 
-                var z = ecma_zipper.ecmaZipper(prog);
+                var z = khepri_zipper.khepriZipper(prog);
                 
                 var c = tree.child(0, tree.child('body', z));
                 
@@ -58,7 +58,7 @@ function($,
                 var prog = $.Program(
                     $.Expression($.Id('a')));
                 
-                var z = ecma_zipper.ecmaZipper(prog);
+                var z = khepri_zipper.khepriZipper(prog);
                 
                 var c = tree.child('body', z);
                 
