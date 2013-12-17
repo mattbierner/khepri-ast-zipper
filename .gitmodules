@@ -1,0 +1,9 @@
+[submodule "dependencies/neith"]
+	path = dependencies/neith
+	url = git@github.com:mattbierner/neith.git
+[submodule "dependencies/khepri-ast"]
+	path = dependencies/khepri-ast
+	url = git@github.com:mattbierner/khepri-ast.git
+[submodule "dependencies/nu"]
+	path = dependencies/nu
+	url = git@github.com:mattbierner/nu.git

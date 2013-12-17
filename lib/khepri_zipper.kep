@@ -1,0 +1,48 @@
+/**
+ * @fileOverview Khepri AST zipper.
+ */
+package (
+    khepriZipper)
+with
+    import 'neith/tree' {
+        treeZipper},
+
+    import 'khepri_ast/node' {
+        Node
+        modify}
+in {
+
+var range = \end -> {
+    var a = [];
+    for (var i = 0; i < end; i = i + 1)
+        a[i] = i;
+    return a;
+};
+
+var joinKeys = \children values ->
+    children.reduce(
+        \p c -> {
+            p[c] = values[c];
+            return p;
+        },
+        []);
+
+/**
+ * Create an new Khepri AST Zipper.
+ * 
+ * @param root Root of AST.
+ */
+khepriZipper = (treeZipper,
+    \node ->
+        (node instanceof Node ?
+            node.children :
+            range(node.length)),
+    
+    \n k -> n[k],
+    
+    \node _ children values ->
+        (node instanceof Node ?
+            modify(node, values, {}) :
+            joinKeys(children, values)));
+
+}
