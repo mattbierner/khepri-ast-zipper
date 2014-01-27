@@ -1,17 +1,30 @@
 {
-    "name": "emca-ast-zipper",
-    "version": "0.0.0",
-    "description": "ECMAScript Zippers",
-    "main": "lib/neith.js",
+    "name": "khepri-ast-zipper",
+    "version": "1.0.0",
+    "description": "Khepri AST Zipper",
+    "author": "Matt Bierner",
+    "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "git://github.com/mattbierner/ecma-ast-zipper.git"
+        "url": "git://github.com/mattbierner/khepri-ast-zipper.git"
     },
     "keywords": [
         "zipper",
-        "ecmascript",
+        "khepri",
+        "ast",
         "tree"
+    ]
+    
+    "main": "dist_node/khepri_zipper.js",
+    "directories": {
+        "lib": "dist_node/"
+    },
+    "files": [
+        "dist_node/",
+        "lib/"
     ],
-    "author": "Matt Bierner",
-    "license": "MIT"
+    "dependencies": {
+        "neith": "1.3.x",
+        "khepri-ast": "3.2.x"
+    }
 }

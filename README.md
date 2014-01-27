@@ -1,4 +1,4 @@
 # Khepri AST Zipper
 
 ## About
-Zipper for Khepri ASTs in Javascript.
+Neith zipper for Khepri ASTs in Javascript.
