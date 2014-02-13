@@ -1,6 +1,6 @@
 {
     "name": "khepri-ast-zipper",
-    "version": "1.0.2",
+    "version": "1.1.0",
     "description": "Khepri AST Zipper",
     "author": "Matt Bierner",
     "license": "MIT",

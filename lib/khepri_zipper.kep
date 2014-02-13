@@ -2,7 +2,11 @@
  * @fileOverview Khepri AST zipper.
  */
 package (
-    khepriZipper)
+    khepriZipper
+    
+    getChild
+    getChildren
+    construct)
 with
     import 'nu-stream::gen' {range},
     import 'nu-stream::stream' {foldl from NIL},
@@ -12,31 +16,46 @@ in {
 
 var buildArray = \pairs ->
     foldl(
-        \p, {key value} -> {
-            p[key] = value;
+        \p {key value} -> {
+            p.(key) = value;
             return p;
         },
         [],
         pairs);
 
 /**
+ * Get the children of a node
+ */
+getChildren = \node ->
+    ?node
+        :?Array.isArray(node)
+            :range(0, node.length)
+            :from(node.children)
+        :NIL;
+
+/**
+ * Get the child of a node.
+ */
+getChild = \node k -> node.(k);
+
+/**
+ * Reconstruct a node
+ */
+construct = \node pairs values ->
+    ?node
+        :?Array.isArray(node)
+            :buildArray(pairs)
+            :modify(node, values(), {})
+        :node;
+
+/**
  * Create an new Khepri AST Zipper.
  * 
  * @param root Root of AST.
  */
-khepriZipper = (treeZipper,
-    \node ->
-        ?node
-            :?Array.isArray(node)
-                :range(0, node.length)
-                :from(node.children)
-            :NIL,
-    
-    \n k -> n[k],
-    
-    \node pairs values ->
-        ?node instanceof Node
-            :modify(node, values(), {})
-            :buildArray(pairs));
+khepriZipper = treeZipper@(
+    getChildren,
+    getChild,
+    construct);
 
 }
