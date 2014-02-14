@@ -1,6 +1,6 @@
 {
     "name": "khepri-ast-zipper",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "description": "Khepri AST Zipper",
     "author": "Matt Bierner",
     "license": "MIT",
@@ -25,7 +25,7 @@
 	"index.js"
     ],
     "dependencies": {
-        "neith": "1.3.x",
+        "neith": ">= 1.3",
         "khepri-ast": ">= 3.2.0"
     }
 }
