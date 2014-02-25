@@ -1,7 +1,3 @@
-/*
- * THIS FILE IS AUTO GENERATED from 'lib/khepri_zipper.kep'
- * DO NOT EDIT
-*/
 "use strict";
 var __o = require("nu-stream")["gen"],
     range = __o["range"],
@@ -15,9 +11,9 @@ var __o = require("nu-stream")["gen"],
     Node = __o2["Node"],
     modify = __o2["modify"],
     khepriZipper, getChild, getChildren, construct, buildArray = (function(pairs) {
-        return foldl((function(p, __o3) {
-            var key = __o3["key"],
-                value = __o3["value"];
+        return foldl((function(p, __o) {
+            var key = __o["key"],
+                value = __o["value"];
             (p[key] = value);
             return p;
         }), [], pairs);
