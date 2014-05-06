@@ -1,5 +1,8 @@
 # ChangeLog #
 
+## 1.2.0 - May 6, 2014
+* Better detection of non object nodes.
+
 ## 1.1.2 - Feb 24, 2014
 * Fixed nu-stream not listed in package.json.
 
