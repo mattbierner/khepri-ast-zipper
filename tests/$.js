@@ -1,16 +1,10 @@
-define(['khepri_ast/clause',
-        'khepri_ast/declaration',
-        'khepri_ast/expression',
-        'khepri_ast/statement',
-        'khepri_ast/program',
-        'khepri_ast/value'],
-function(clause,
-        declaration,
-        expression,
-        statement,
-        program,
-        value){
-"use strict";
+var clause = require('khepri-ast').clause;
+var expression = require('khepri-ast').expression;
+var statement = require('khepri-ast').statement;
+var program = require('khepri-ast').program;
+var value = require('khepri-ast').value;
+var declaration = require('khepri-ast').declaration;
+
 /* 
  ******************************************************************************/
 var binary = function(op) {
@@ -219,7 +213,7 @@ var Array = function(/*...*/) {
     return new expression.ArrayExpression(null, arguments);
 };
 
-return {
+module.exports = {
     'Program': Program,
     
     'Number': Number,
@@ -298,4 +292,3 @@ return {
     'Object': Object,
     'Array': Array
 };
-});

@@ -13,23 +13,19 @@
         modify = __o2["modify"],
         khepriZipper, getChild, getChildren, construct, __dot = (function(x, y) {
             return x[y];
-        }),
-        isObject = (function(x) {
-            var y = (typeof x);
-            return ("object" === y);
         });
     (getChildren = (function(node) {
-        return ((node && isObject(node)) ? (Array.isArray(node) ? range(0, node.length) : from(node.children)) :
-            NIL);
+        return (Array.isArray(node) ? range(0, node.length) : ((node && node.children) ? from(node.children) :
+            NIL));
     }));
     (getChild = __dot);
     (construct = (function(node, pairs, values) {
-        return ((node && isObject(node)) ? (Array.isArray(node) ? foldl((function(p, __o3) {
+        return (Array.isArray(node) ? foldl((function(p, __o3) {
             var key = __o3["key"],
                 value = __o3["value"];
             (p[key] = value);
             return p;
-        }), [], pairs) : modify(node, values(), ({}))) : node);
+        }), [], pairs) : ((node && node.children) ? modify(node, values(), ({})) : node));
     }));
     (khepriZipper = treeZipper.bind(null, getChildren, getChild, construct));
     (exports["khepriZipper"] = khepriZipper);
