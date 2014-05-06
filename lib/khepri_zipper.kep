@@ -14,7 +14,9 @@ with
     import 'khepri-ast::node' {Node modify}
 in {
 
-var buildArray = \pairs ->
+var isObject := (typeof) \> (===, 'object');
+
+var buildArray := \pairs ->
     foldl(
         \p {key value} -> {
             p.(key) = value;
@@ -26,9 +28,9 @@ var buildArray = \pairs ->
 /**
  * Get the children of a node
  */
-getChildren = \node ->
-    ?node
-        :?Array.isArray(node)
+getChildren := \node ->
+    ?node && isObject node
+        :?Array.isArray node
             :range(0, node.length)
             :from(node.children)
         :NIL;
@@ -36,14 +38,14 @@ getChildren = \node ->
 /**
  * Get the child of a node.
  */
-getChild = \node k -> node.(k);
+getChild = (.);
 
 /**
  * Reconstruct a node
  */
-construct = \node pairs values ->
-    ?node
-        :?Array.isArray(node)
+construct := \node pairs values ->
+    ?node && isObject node
+        :?Array.isArray node
             :buildArray(pairs)
             :modify(node, values(), {})
         :node;
@@ -53,7 +55,7 @@ construct = \node pairs values ->
  * 
  * @param root Root of AST.
  */
-khepriZipper = treeZipper@(
+khepriZipper := treeZipper@(
     getChildren,
     getChild,
     construct);
